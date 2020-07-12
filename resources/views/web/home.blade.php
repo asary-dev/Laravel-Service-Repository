@@ -8,7 +8,7 @@
             <div class="item border border-secondary">
                 <div class="item__info">
                     <img src="{{$item->product_image}}" class="item__image" />
-                    <h5 class="item__title my-2">{{$item->product_name}}</h5>
+                    <h5 class="item__title my-2">{{$item->product_code}} - {{$item->product_name}}</h5>
                     <div class="item__price">{{$item->product_formatted_price}}</div>
                 </div>
                 <div class="item__footer">

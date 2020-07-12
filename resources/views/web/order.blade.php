@@ -14,7 +14,7 @@
     </div>
     <div class="row mb-3 border-bottom boder-secondary">
         <div class="col-5 text-left">Product Name</div>
-        <div class="col-7 text-right">{{$order->product_detail->product_name}}</div>
+        <div class="col-7 text-right">{{$order->product_detail->product_code}} - {{$order->product_detail->product_name}}</div>
     </div>
     <div class="row mb-3 border-bottom boder-secondary">
         <div class="col-5 text-left">Quantity</div>

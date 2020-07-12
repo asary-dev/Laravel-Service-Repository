@@ -10,7 +10,7 @@
                 {{ "< Back" }}
             </a>
         </div>
-        <h5>{{$product->product_name}}</h5>
+        <h5>{{$product->product_code}} - {{$product->product_name}}</h5>
         <h6>{{$product->product_formatted_price}}</h6>
         <h6>Qty
             <span class="my-3">

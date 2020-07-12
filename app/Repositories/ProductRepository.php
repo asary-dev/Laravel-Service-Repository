@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\product;
+use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
 
 class productRepository{
