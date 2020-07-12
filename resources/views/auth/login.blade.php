@@ -36,5 +36,9 @@
             </button>
         </div>
     </form>
+    <small class="text-muted">
+        <div><i class="text-muted">admin@example.com</i></div>
+        <div><i class="text-muted">password</i></div>
+    </small>
 </div>
 @endsection
