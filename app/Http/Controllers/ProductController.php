@@ -34,7 +34,7 @@ class ProductController extends Controller
     {        
         // For Datatables
         if ($request->ajax()) {
-            return Datatables::of($this->productService->getAllProductsWithFormattedPrices())
+            return Datatables::of($this->productService->getAllProductsWithFormattedPrices($request))
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                            $btn =  "<a href='/admin/product/$row->id' class=''>Edit</a> |

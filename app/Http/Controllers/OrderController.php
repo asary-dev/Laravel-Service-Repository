@@ -38,7 +38,7 @@ class OrderController extends Controller
     {        
         // For Datatables
         if ($request->ajax()) {
-            return Datatables::of($this->orderService->getAllOrdersWithFormattedPrices())
+            return Datatables::of($this->orderService->getAllOrdersWithFormattedPrices($request))
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                            $btn =  "<a href='/admin/order/$row->id' class=''>Edit</a> |
@@ -62,10 +62,10 @@ class OrderController extends Controller
      * Endpoint for select Product
      * 
      */
-    public function selectProduct(){
+    public function selectProduct(Request $request){
         
         try {
-            return response()->json($this->productService->getAllProductsWithFormattedPrices(),200);
+            return response()->json($this->productService->getAllProductsWithFormattedPrices($request),200);
         } catch (Exception $e) {
             return back()->with([
                 'status'=>"danger",

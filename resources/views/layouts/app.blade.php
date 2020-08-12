@@ -29,7 +29,7 @@
 
 <body>
     <div class="main-wrapper">
-        @if (Auth::user())
+        @if (Request::segment(1) == "admin")
         <ul class="menubar">
             <li class="menubar__link {{Request::segment(2) == "product" ? "active" : null}} "><a
                     href="{{route('admin.product.index')}}">Product</a></li>
@@ -37,19 +37,18 @@
                     href="{{route('admin.order.index')}}">Orders</a></li>
             <li class="menubar__link {{Request::segment(2) == "user" ? "active" : null}} "><a
                     href="{{route('admin.user.index')}}">Users</a></li>
-
-            <li class="menubar__link ml-auto">
-                <form method="POST" action="{{ url('/logout') }}">
-                    @csrf
-                    <button type="submit" href="#" class="p-0 m-auto btn btn-link">Logout</a>
-                </form>
-            </li>
-
         </ul>
         @endif
         <div class="main-content">
             @yield('content')
         </div>
+    </div>
+    <div class="link-between">
+        @if (Request::segment(1) != "admin")
+        <a href="/admin"> Admin Page </a>
+        @else
+        <a href="/"> Storefront </a>
+        @endif
     </div>
 </body>
 

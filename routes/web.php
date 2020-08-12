@@ -24,9 +24,10 @@ Route::post('/product/{id}', 'HomeController@purchase')->name('product.purchase'
 // for after purchase details
 Route::get('/order/{id}', 'HomeController@order')->name('order');
 
-Route::group(['prefix'=>'admin','as'=>'admin.',"middleware"=>"auth"], function(){
+Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/', 'HomeController@admin')->name("home");
     Route::get('order/select_products', 'OrderController@selectProduct');
+    Route::get('order/report', 'OrderController@report')->name("admin.order.report");
     Route::resources([
         "user"=>"UserController",
         "product"=>"ProductController",

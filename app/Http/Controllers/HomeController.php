@@ -35,11 +35,11 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      */
-    public function index()
+    public function index(Request $request)
     {
         
         try {
-            $result = $this->productService->getAllProductsWithFormattedPrices();
+            $result = $this->productService->getAllProductsWithFormattedPrices($request);
 
             // return to view with data
             return view('web.home')->with(["products"=>$result]);

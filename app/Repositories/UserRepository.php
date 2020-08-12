@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class UserRepository{
     protected $user;
@@ -12,7 +13,7 @@ class UserRepository{
         $this->user = $user;
     }
 
-    public function getAll(){
+    public function getAll(Request $request){
         return $this->user->get();
     }
 

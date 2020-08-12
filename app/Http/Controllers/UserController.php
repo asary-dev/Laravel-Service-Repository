@@ -31,7 +31,7 @@ class UserController extends Controller
     {
         // For Datatables
         if ($request->ajax()) {
-            return Datatables::of($this->userService->getAllUsers())
+            return Datatables::of($this->userService->getAllUsers( $request))
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    

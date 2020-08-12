@@ -6,6 +6,7 @@ use Exception;
 use InvalidArgumentException;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Http\Request;
 use App\Repositories\OrderRepository;
 
 class OrderService{
@@ -21,8 +22,8 @@ class OrderService{
      * Get every single order
      * 
      */
-    public function getAllOrders(){
-        return $this->orderRepository->getAll();
+    public function getAllOrders(Request $requests){
+        return $this->orderRepository->getAll($requests);
     }
     
     
@@ -31,9 +32,9 @@ class OrderService{
      * Get every single user
      * 
      */
-    public function getAllOrdersWithFormattedPrices(){
+    public function getAllOrdersWithFormattedPrices(Request $requests){
         // added price Formatted with RP.
-        return $this->orderRepository->getAll()->transform(function($item){
+        return $this->orderRepository->getAll($requests)->transform(function($item){
             $item->formatted_total = $this->formatToRupiah($item->total);
             error_log($item->product_detail);
             $item->product_detail->product_formatted_price = $this->formatToRupiah($item->product_detail->product_price);

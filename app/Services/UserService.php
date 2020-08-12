@@ -6,6 +6,7 @@ use Exception;
 use InvalidArgumentException;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 
 class UserService{
@@ -23,8 +24,8 @@ class UserService{
      * Get every single user
      * 
      */
-    public function getAllUsers(){
-        return $this->userRepository->getAll();
+    public function getAllUsers(Request $requests){
+        return $this->userRepository->getAll($requests);
     }
     
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Http\Request;
 use App\Models\Order;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,8 +13,8 @@ class OrderRepository{
         $this->order = $order;
     }
 
-    public function getAll(){
-        return $this->order->get();
+    public function getAll(Request $requests){
+        return $this->order->Filter($requests)->get();
     }
 
     public function getOneById($id){

@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-
+use Illuminate\Http\Request;
 use App\Repositories\ProductRepository;
 
 class ProductService{
@@ -25,8 +25,8 @@ class ProductService{
      * Get every single user
      * 
      */
-    public function getAllProducts(){
-        return $this->productRepository->getAll();
+    public function getAllProducts(Request $requests){
+        return $this->productRepository->getAll($requests);
     }
     
     /**
@@ -34,9 +34,9 @@ class ProductService{
      * Get every single user
      * 
      */
-    public function getAllProductsWithFormattedPrices(){
+    public function getAllProductsWithFormattedPrices(Request $requests){
         // added price Formatted with RP.
-        return $this->productRepository->getAll()->transform(function($item){
+        return $this->productRepository->getAll($requests)->transform(function($item){
             $item->product_formatted_price = $this->formatToRupiah($item->product_price) ;
             $item->orders->transform(function($order){
                 $order->formatted_total = $this->formatToRupiah($order->total) ;

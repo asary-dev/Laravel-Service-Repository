@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class productRepository{
     protected $product;
@@ -12,7 +13,7 @@ class productRepository{
         $this->product = $product;
     }
 
-    public function getAll(){
+    public function getAll(Request $request){
         return $this->product->get();
     }
 
